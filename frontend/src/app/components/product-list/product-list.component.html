@@ -1,0 +1,52 @@
+<div class="main-content">
+
+  <div class="section-content section-content-p30">
+    <h4 *ngIf="searchMode; else elseBlock">Keyword: {{this.route.snapshot.paramMap.get('keyword')}}</h4>
+    <ng-template #elseBlock><h4>Category: {{category_name}}</h4></ng-template>
+    <hr>
+    <div class="container-fluid">
+      <div class="row">
+
+        <div *ngFor="let tempPro of products" class="col-md-3">
+            <div class="product-box">
+
+              <a routerLink="/products/{{tempPro.id}}">
+              <img src="{{tempPro.imageUrl}}" class="img-responsive" alt="img"/>
+              </a>
+              <h1>
+              <a routerLink="/products/{{tempPro.id}}">{{tempPro.name}}</a>
+              </h1>
+                <div class="price">{{tempPro.unitPrice | currency: 'USD'}}</div>
+              <button (click)="addToCart(tempPro)" class="btn btn-success btn-sm">Add to Cart</button>
+            </div>
+        </div>
+
+        <div *ngIf="products?.length==0" class="alert alert-warning col-md-12" role="alert">No products found.</div>
+
+      </div>
+
+      <div class="footer-pagination">
+        <div class="row">
+          <div class="col-md-6"></div>
+
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-9" style="padding-left: 30%">
+                <ngb-pagination [(page)]="thePageNumber"
+                                [pageSize]="thePageSize"
+                                [collectionSize]="theTotalElements"
+                                (pageChange)="listProducts()">
+
+                </ngb-pagination>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
