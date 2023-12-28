@@ -3,9 +3,6 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dh_cred')
     }
-    triggers {
-        pollSCM{'*/5 * * * *'}
-    }
     stages {
         stage('Checkout'){
             agent any
