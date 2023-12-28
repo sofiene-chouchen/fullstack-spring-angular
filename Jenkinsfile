@@ -49,6 +49,7 @@ pipeline {
         }
 
         stage('logout'){
+            agent any
             steps {
                 sh 'docker logout'
             }
