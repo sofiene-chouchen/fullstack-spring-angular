@@ -20,10 +20,10 @@ pipeline {
 
         stage('Build Backend'){
             agent any
-            /*when {
-                changeset "**/backend/*.*"
-                beforeAgent true
-            }*/
+           //when {
+             //   changeset "**/backend/*.*"
+               // beforeAgent true
+            //}
             steps {
                 dir('backend'){
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/ecommerce_backend:$BUILD_ID .'
@@ -35,10 +35,10 @@ pipeline {
 
         stage('Build Frontend'){
             agent any
-            /*when {
-                changeset "**/frontend/*.*"
-                beforeAgent true
-            }*/
+           // when {
+            //    changeset "**/frontend/*.*"
+              //  beforeAgent true
+            //}
             steps {
                 dir('backend'){
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/ecommerce_frontend:$BUILD_ID .'
